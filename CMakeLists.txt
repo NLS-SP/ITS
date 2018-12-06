@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.2)
+project(ITS)
+
+set(CMAKE_BUILD_TYPE "debug")
+set(CMAKE_CXX_FLAGS "-std=c++11")
+include_directories( "/usr/local/include/eigen3" )
+include_directories( "/usr/local/include/DBoW3" )
+find_package(OpenCV 3.1 REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+set(DBoW3_LIBS "/usr/local/lib/libDBoW3.a")
+add_executable( vp_and_lbd test_ITS.cpp )
+target_link_libraries( vp_and_lbd ${OpenCV_LIBS} ${DBoW3_LIBS} )
